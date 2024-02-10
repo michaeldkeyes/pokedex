@@ -1,0 +1,8 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+  },
+  "extends": ["@nuxt", "plugin:prettier/recommended", "prettier"],
+  "plugins": ["nuxt"],
+}
