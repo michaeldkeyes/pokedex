@@ -6,10 +6,10 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
+    "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore . --fix",
     "lint:prettier": "prettier --check",
     "lint": "npm run lint:js && lint:prettier",
-    "lintfix": "prettier --write --list-different . && npm run lint:js --fix",
+    "lintfix": "prettier --write --list-different . && npm run lint:js",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -28,6 +28,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
     "sass": "^1.70.0"
   }
 }

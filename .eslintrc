@@ -4,5 +4,6 @@
     "node": true,
   },
   "extends": ["@nuxt", "plugin:prettier/recommended", "prettier"],
+  "ignorePatterns": [".eslintrc"],
   "plugins": ["nuxt"],
 }

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import type { NuxtError } from "nuxt/app";
 
-const props = defineProps({
+interface IProps {
+  error: NuxtError;
+}
+
+withDefaults(defineProps<IProps>(), {
   error: Object as () => NuxtError,
 });
 
