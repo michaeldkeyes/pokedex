@@ -1,8 +1,5 @@
 <script setup lang="ts">
-defineEmits<{
-  sortByNumber: [];
-  sortByName: [];
-}>();
+const store = usePokemonStore();
 </script>
 
 <template>
@@ -20,7 +17,7 @@ defineEmits<{
             name="filters"
             value="number"
             checked
-            @input="$emit('sortByNumber')"
+            @input="store.sortByNumber"
           />
           <label for="number">Number</label>
         </div>
@@ -30,7 +27,7 @@ defineEmits<{
             type="radio"
             name="filters"
             value="name"
-            @input="$emit('sortByName')"
+            @input="store.sortByName"
           />
           <label for="name">Name</label>
         </div>

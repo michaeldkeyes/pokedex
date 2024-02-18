@@ -3,10 +3,6 @@ const store = usePokemonStore();
 
 const query = defineModel<string>({ default: "" });
 
-function search(query: string) {
-  store.search(query);
-}
-
 function resetQuery() {
   query.value = "";
   store.search(query.value);
@@ -21,7 +17,7 @@ function resetQuery() {
       v-model.trim="query"
       type="text"
       placeholder="Search"
-      @keyup="search(query)"
+      @keyup="store.search(query)"
     />
     <img
       id="search-close-icon"

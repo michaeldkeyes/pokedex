@@ -6,8 +6,8 @@
         <h1>Pokedex</h1>
       </div>
       <div class="search-wrapper">
-        <PokeSearch @search="search" />
-        <PokeSort @sort-by-name="sortByName" @sort-by-number="sortByNumber" />
+        <PokeSearch />
+        <PokeSort />
       </div>
     </div>
   </header>
