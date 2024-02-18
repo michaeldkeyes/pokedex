@@ -2,18 +2,11 @@
 const store = usePokemonStore();
 
 const { pokemon } = storeToRefs(store);
-// import type { PokemonResult } from "~/types";
-
-// interface Props {
-//   pokemonList: PokemonResult[];
-// }
-
-// defineProps<Props>();
 </script>
 
 <template>
   <section class="pokemon-list">
-    <div class="container" v-if="pokemon.length > 0">
+    <div v-if="pokemon.length > 0" class="container">
       <div v-for="(poke, id) in pokemon" :key="id" class="list-wrapper">
         <NuxtLink :to="`/details/${poke.url.split('/')[6]}`">
           <p>#{{ poke.url.split("/")[6] }}</p>

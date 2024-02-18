@@ -10,6 +10,9 @@ export const usePokemonStore = defineStore("pokemonStore", () => {
     );
 
     pokemonList.value = pokemonData.value.results;
+  }
+
+  function resetPokemon() {
     pokemon.value = pokemonList.value;
   }
 
@@ -48,6 +51,7 @@ export const usePokemonStore = defineStore("pokemonStore", () => {
     pokemon,
     pokemonList,
     fetchPokemon,
+    resetPokemon,
     search,
     sortByName,
     sortByNumber,

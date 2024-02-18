@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { PokemonResult } from "~/types";
-
 const store = usePokemonStore();
 
 await callOnce(store.fetchPokemon);
+
+store.resetPokemon();
 
 // interface PokemonData {
 //   count: number;
