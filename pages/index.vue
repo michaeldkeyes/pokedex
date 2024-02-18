@@ -1,58 +1,62 @@
 <script setup lang="ts">
 import type { PokemonResult } from "~/types";
 
-interface PokemonData {
-  count: number;
-  next: string;
-  previous: null;
-  results: PokemonResult[];
-}
+const store = usePokemonStore();
 
-let pokemonResults: PokemonResult[] = [];
-const filteredPokemon = ref<PokemonResult[]>([]);
+await callOnce(store.fetchPokemon);
 
-const { data: pokemonList } = await useFetch<PokemonData>(
-  "https://pokeapi.co/api/v2/pokemon?limit=151",
-);
+// interface PokemonData {
+//   count: number;
+//   next: string;
+//   previous: null;
+//   results: PokemonResult[];
+// }
 
-pokemonResults = pokemonList.value!.results;
-filteredPokemon.value = pokemonResults;
+// let pokemonResults: PokemonResult[] = [];
+// const filteredPokemon = ref<PokemonResult[]>([]);
 
-function search(query: string) {
-  console.log("searching...");
-  filteredPokemon.value = pokemonResults.filter((pokemon) => {
-    return pokemon.name.toLowerCase().startsWith(query);
-  });
-}
+// const { data: pokemonList } = await useFetch<PokemonData>(
+//   "https://pokeapi.co/api/v2/pokemon?limit=151",
+// );
 
-function sortByName() {
-  console.log("Sorting by name...");
+// pokemonResults = pokemonList.value!.results;
+// filteredPokemon.value = pokemonResults;
 
-  filteredPokemon.value.sort((a, b) => {
-    if (a.name < b.name) {
-      return -1;
-    }
-    if (a.name > b.name) {
-      return 1;
-    }
+// function search(query: string) {
+//   console.log("searching...");
+//   filteredPokemon.value = pokemonResults.filter((pokemon) => {
+//     return pokemon.name.toLowerCase().startsWith(query);
+//   });
+// }
 
-    return 0;
-  });
-}
+// function sortByName() {
+//   console.log("Sorting by name...");
 
-function sortByNumber() {
-  console.log("Sorting by number...");
+//   filteredPokemon.value.sort((a, b) => {
+//     if (a.name < b.name) {
+//       return -1;
+//     }
+//     if (a.name > b.name) {
+//       return 1;
+//     }
 
-  filteredPokemon.value.sort((a, b) => {
-    const idA = parseInt(a.url.split("/")[6]);
-    const idB = parseInt(b.url.split("/")[6]);
-    return idA - idB;
-  });
-}
+//     return 0;
+//   });
+// }
+
+// function sortByNumber() {
+//   console.log("Sorting by number...");
+
+//   filteredPokemon.value.sort((a, b) => {
+//     const idA = parseInt(a.url.split("/")[6]);
+//     const idB = parseInt(b.url.split("/")[6]);
+//     return idA - idB;
+//   });
+// }
 </script>
 
 <template>
-  <main class="bg-red flex flex-col items-center gap-4">
+  <main class="flex flex-col items-center gap-4 bg-red">
     <PokeHeader />
     <!-- <div>
       <div class="flex">
@@ -62,7 +66,7 @@ function sortByNumber() {
 
       <PokeSearch @search="search" />
       <PokeSort @sort-by-name="sortByName" @sort-by-number="sortByNumber" /> -->
-    <PokemonList :pokemon-list="filteredPokemon" />
+    <PokemonList />
     <!-- </div> -->
   </main>
 </template>

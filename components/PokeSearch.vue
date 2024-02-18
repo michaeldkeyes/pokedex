@@ -1,12 +1,15 @@
 <script setup lang="ts">
+const store = usePokemonStore();
+
 const query = defineModel<string>({ default: "" });
-const emit = defineEmits<{
-  search: [query: string];
-}>();
+
+function search(query: string) {
+  store.search(query);
+}
 
 function resetQuery() {
   query.value = "";
-  emit("search", query.value);
+  store.search(query.value);
 }
 </script>
 
@@ -18,7 +21,7 @@ function resetQuery() {
       v-model.trim="query"
       type="text"
       placeholder="Search"
-      @keyup="$emit('search', query)"
+      @keyup="search(query)"
     />
     <img
       id="search-close-icon"

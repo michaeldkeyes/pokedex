@@ -3,7 +3,12 @@
     "browser": true,
     "node": true,
   },
-  "extends": ["@nuxt", "plugin:prettier/recommended", "prettier"],
+  "extends": [
+    "@nuxt",
+    "plugin:prettier/recommended",
+    "prettier",
+    "plugin:tailwindcss/recommended",
+  ],
   "ignorePatterns": [".eslintrc"],
-  "plugins": ["nuxt"],
+  "plugins": ["nuxt", "tailwindcss"],
 }
