@@ -5,8 +5,13 @@ export default {
   theme: {
     colors: {
       red: "#dc0a2d",
+      white: "#ffffff",
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

@@ -1,11 +1,11 @@
 <template>
-  <header>
-    <div class="container">
-      <div class="logo-wrapper">
-        <img src="~/assets/pokeball.svg" alt="pokeball" />
-        <h1>Pokedex</h1>
+  <header class="font-poppins m-4 w-[90%]">
+    <div class="container m-0">
+      <div class="flex items-center">
+        <img class="mr-4" src="~/assets/pokeball.svg" alt="pokeball" />
+        <h1 class="text-white text-2xl font-bold">Pokedex</h1>
       </div>
-      <div class="search-wrapper">
+      <div class="flex w-[100%] items-center gap-4">
         <PokeSearch />
         <PokeSort />
       </div>
