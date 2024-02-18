@@ -14,7 +14,7 @@ store.resetPokemon();
 </script>
 
 <template>
-  <main class="flex flex-col items-center gap-4 bg-red">
+  <main class="flex h-screen w-screen flex-col items-center gap-4 bg-red">
     <PokeHeader />
     <PokemonList />
   </main>

@@ -1,6 +1,6 @@
 <template>
   <header class="w-[90%] font-poppins">
-    <div class="container m-0">
+    <div class="m-0 w-full">
       <div class="my-4 flex items-center">
         <img class="mr-4" src="~/assets/pokeball.svg" alt="pokeball" />
         <h1 class="text-2xl font-bold text-white">Pokedex</h1>

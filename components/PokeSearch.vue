@@ -17,7 +17,7 @@ function resetQuery() {
     <input
       id="search-input"
       v-model.trim="query"
-      class="w-[60%] border-none text-xs"
+      class="w-[60%] border-none text-xs focus-visible:outline-none"
       type="text"
       placeholder="Search"
       @keyup="store.search(query)"

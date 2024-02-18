@@ -5,17 +5,34 @@ const { pokemon } = storeToRefs(store);
 </script>
 
 <template>
-  <section class="pokemon-list">
-    <div v-if="pokemon.length > 0" class="container">
-      <div v-for="(poke, id) in pokemon" :key="id" class="list-wrapper">
-        <NuxtLink :to="`/details/${poke.url.split('/')[6]}`">
-          <p>#{{ poke.url.split("/")[6] }}</p>
-          <img
-            :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${poke.url.split('/')[6]}.svg`"
-            :alt="poke.name"
-          />
-          <p>{{ poke.name }}</p>
-        </NuxtLink>
+  <section
+    class="max-h-24 min-h-minCalc w-widthCalc overflow-y-auto rounded-xl bg-white shadow-inner"
+  >
+    <div v-if="pokemon.length > 0" class="w-full">
+      <div class="mx-0 my-4 flex flex-wrap items-center justify-center gap-3">
+        <div
+          v-for="(poke, id) in pokemon"
+          :key="id"
+          class="size-36 cursor-pointer rounded-lg bg-white text-center shadow"
+        >
+          <NuxtLink :to="`/details/${poke.url.split('/')[6]}`">
+            <p
+              class="min-h-4 px-2 py-0 text-right text-xxs leading-6 text-grayscaleMedium"
+            >
+              #{{ poke.url.split("/")[6] }}
+            </p>
+            <img
+              class="m-auto size-18"
+              :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${poke.url.split('/')[6]}.svg`"
+              :alt="poke.name"
+            />
+            <div
+              class="-mt-4 rounded-md bg-grayscaleBackground px-2 pb-2 pt-10 text-grayScaleDark"
+            >
+              <p class="text-xs capitalize">{{ poke.name }}</p>
+            </div>
+          </NuxtLink>
+        </div>
       </div>
     </div>
     <div v-else>Pokemon not found</div>
