@@ -1,35 +1,45 @@
 <script setup lang="ts">
 const store = usePokemonStore();
+
+const showSort = ref<boolean>(false);
 </script>
 
 <template>
-  <div class="sort-wrapper">
-    <div class="sort-wrap">
+  <div class="relative">
+    <div
+      class="relative flex min-h-8 min-w-8 items-center justify-center rounded-full bg-white shadow-inner"
+      @click="showSort = !showSort"
+    >
       <img id="sort-icon" src="~/assets/sorting.svg" alt="sorting" />
     </div>
-    <div class="filter-wrapper">
-      <p>Sort by:</p>
-      <div class="filter-wrap">
-        <div>
+    <div
+      v-if="showSort"
+      class="absolute right-0 top-10 z-50 min-w-28 rounded-xl border-4 border-t-0 border-solid border-red bg-red px-1 pb-1 pt-0 shadow"
+    >
+      <p class="my-3 px-4 py-5 text-xs font-bold text-white">Sort by:</p>
+      <div class="rounded-lg bg-white px-4 py-5 shadow-inner">
+        <div class="mb-4 flex items-center gap-2">
           <input
             id="number"
+            class="accent-red"
             type="radio"
             name="filters"
             value="number"
             checked
             @input="store.sortByNumber"
           />
-          <label for="number">Number</label>
+          <label class="text-xs" for="number">Number</label>
         </div>
-        <div>
+        <div class="flex items-center gap-2">
           <input
             id="name"
+            class="accent-red"
             type="radio"
             name="filters"
             value="name"
             @input="store.sortByName"
           />
-          <label for="name">Name</label>
+          <label class="text-xs" for="name">Name</label>
         </div>
       </div>
     </div>

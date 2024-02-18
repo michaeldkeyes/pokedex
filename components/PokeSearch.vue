@@ -10,17 +10,22 @@ function resetQuery() {
 </script>
 
 <template>
-  <div class="search-wrap">
-    <img src="~/assets/search.svg" alt="search" />
+  <div
+    class="relative flex h-8 w-[100%] items-center gap-2 rounded-2xl bg-white shadow-inner"
+  >
+    <img src="~/assets/search.svg" alt="search" class="ml-4" />
     <input
       id="search-input"
       v-model.trim="query"
+      class="w-[60%] border-none text-xs"
       type="text"
       placeholder="Search"
       @keyup="store.search(query)"
     />
     <img
+      v-if="query.length > 0"
       id="search-close-icon"
+      class="absolute right-4 cursor-pointer"
       src="~/assets/cross.svg"
       alt="cross icon"
       @click="resetQuery"

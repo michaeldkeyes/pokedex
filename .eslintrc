@@ -9,6 +9,5 @@
     "prettier",
     "plugin:tailwindcss/recommended",
   ],
-  "ignorePatterns": [".eslintrc"],
   "plugins": ["nuxt", "tailwindcss"],
 }
