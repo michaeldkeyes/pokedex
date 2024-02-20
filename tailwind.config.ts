@@ -6,6 +6,7 @@ export default {
     colors: {
       grayscaleBackground: "#efefef",
       grayScaleDark: "#212121",
+      grayscaleLight: "#e0e0e0",
       grayscaleMedium: "#666666",
       red: "#dc0a2d",
       white: "#ffffff",
