@@ -12,17 +12,17 @@ const props = defineProps<Props>();
   <p class="my-3 text-center text-xs font-bold">Base Stats</p>
 
   <div
-    class="flex items-center"
     v-for="(stat, index) in props.stats"
     :key="index"
+    class="flex items-center"
   >
     <p
       id="stat-name"
-      class="border-grayscaleLight my-2 mr-2 min-w-11 border-r-[1px] border-solid pr-2 text-right text-xs font-bold"
+      class="my-2 mr-2 min-w-11 border-r-[1px] border-solid border-grayscaleLight pr-2 text-right text-xs font-bold"
     >
       {{ props.stats[index].name }}
     </p>
-    <p class="text-grayScaleDark my-2 mr-2 min-w-5 text-xs">
+    <p class="my-2 mr-2 min-w-5 text-xs text-grayScaleDark">
       {{ props.stats[index].value }}
     </p>
     <progress

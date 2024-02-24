@@ -9,5 +9,5 @@
     "prettier",
     "plugin:tailwindcss/recommended",
   ],
-  "plugins": ["nuxt", "tailwindcss"],
+  "plugins": ["nuxt", "tailwindcss", "vitest"],
 }

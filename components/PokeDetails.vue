@@ -73,10 +73,10 @@ const stats = [
 
 <template>
   <main class="m-0 flex h-screen w-screen flex-col items-center gap-4 p-0">
-    <PokeDetailsHeader :name="pokemon.name" :id="pokemon.id" />
-    <PokeImage :id="id" :pokemonName="pokemon.name" />
+    <PokeDetailsHeader :id="pokemon.id" :name="pokemon.name" />
+    <PokeImage :id="id" :pokemon-name="pokemon.name" />
     <div
-      class="bg-white relative -mt-12 flex flex-col rounded-lg px-5 pb-5 pt-14 shadow-inner"
+      class="relative -mt-12 flex flex-col rounded-lg bg-white px-5 pb-5 pt-14 shadow-inner"
     >
       <PokeType :background-color="backgroundColor" :types="pokemon.types" />
       <PokeAbout

@@ -4,13 +4,6 @@ const store = usePokemonStore();
 await callOnce(store.fetchPokemon);
 
 store.resetPokemon();
-
-// interface PokemonData {
-//   count: number;
-//   next: string;
-//   previous: null;
-//   results: PokemonResult[];
-// }
 </script>
 
 <template>

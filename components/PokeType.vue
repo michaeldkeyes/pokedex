@@ -15,7 +15,7 @@ console.log(props.types);
       v-for="(type, index) in types"
       id="poke-type"
       :key="index"
-      class="text-white my-3 rounded-lg px-2 py-1 text-xs font-bold capitalize"
+      class="my-3 rounded-lg px-2 py-1 text-xs font-bold capitalize text-white"
     >
       {{ type.type.name }}
     </p>

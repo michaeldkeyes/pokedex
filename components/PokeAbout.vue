@@ -21,16 +21,16 @@ const height = computed(() => {
   <p class="my-3 text-center text-xs font-bold">About</p>
   <div class="flex min-h-20 items-end">
     <div
-      class="before:bg-grayscaleLight relative flex-1 text-center before:absolute before:bottom-0 before:right-0 before:top-0 before:m-auto before:h-full before:w-[1px]"
+      class="relative flex-1 text-center before:absolute before:inset-y-0 before:right-0 before:m-auto before:h-full before:w-[1px] before:bg-grayscaleLight"
     >
       <div class="flex items-center justify-center gap-2 px-5 py-2 text-center">
         <img class="text-center" src="~/assets/weight.svg" alt="weight" />
         <p class="my-2 text-center text-xs">{{ weight }}</p>
       </div>
-      <p class="text-grayscaleMedium text-xxs my-2 text-center">Weight</p>
+      <p class="my-2 text-center text-xxs text-grayscaleMedium">Weight</p>
     </div>
     <div
-      class="before:bg-grayscaleLight relative flex-1 text-center before:absolute before:bottom-0 before:right-0 before:top-0 before:m-auto before:h-full before:w-[1px]"
+      class="relative flex-1 text-center before:absolute before:inset-y-0 before:right-0 before:m-auto before:h-full before:w-[1px] before:bg-grayscaleLight"
     >
       <div class="flex items-center justify-center gap-2 px-5 py-2 text-center">
         <img
@@ -40,7 +40,7 @@ const height = computed(() => {
         />
         <p class="my-2 text-center text-xs">{{ height }}</p>
       </div>
-      <p class="text-grayscaleMedium text-xxs my-2 text-center">Height</p>
+      <p class="my-2 text-center text-xxs text-grayscaleMedium">Height</p>
     </div>
     <div class="relative flex-1 text-center">
       <div class="flex flex-col items-center justify-center gap-0 px-1 py-2">
@@ -52,10 +52,10 @@ const height = computed(() => {
           {{ ability.ability.name }}
         </p>
       </div>
-      <p class="text-grayscaleMedium text-xxs my-2 text-center">Abilities</p>
+      <p class="my-2 text-center text-xxs text-grayscaleMedium">Abilities</p>
     </div>
   </div>
-  <p class="text-grayScaleDark my-2 text-xs">
+  <p class="my-2 text-xs text-grayScaleDark">
     {{ flavorText }}
   </p>
 </template>

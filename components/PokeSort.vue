@@ -7,12 +7,14 @@ const showSort = ref<boolean>(false);
 <template>
   <div class="relative">
     <div
+      data-testid="sort-icon"
       class="relative flex min-h-8 min-w-8 items-center justify-center rounded-full bg-white shadow-inner"
       @click="showSort = !showSort"
     >
       <img id="sort-icon" src="~/assets/sorting.svg" alt="sorting" />
     </div>
     <div
+      data-testid="show-sort"
       v-if="showSort"
       class="absolute right-0 top-10 z-50 min-w-32 rounded-xl border-4 border-t-0 border-solid border-red bg-red px-1 pb-1 pt-0 shadow"
     >
@@ -23,7 +25,7 @@ const showSort = ref<boolean>(false);
             id="number"
             class="accent-red"
             type="radio"
-            name="filters"
+            name="number"
             value="number"
             checked
             @input="store.sortByNumber"
@@ -35,7 +37,7 @@ const showSort = ref<boolean>(false);
             id="name"
             class="accent-red"
             type="radio"
-            name="filters"
+            name="name"
             value="name"
             @input="store.sortByName"
           />
