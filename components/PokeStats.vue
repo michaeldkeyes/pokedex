@@ -17,17 +17,20 @@ const props = defineProps<Props>();
     class="flex items-center"
   >
     <p
-      id="stat-name"
+      data-testid="stat-name"
       class="my-2 mr-2 min-w-11 border-r-[1px] border-solid border-grayscaleLight pr-2 text-right text-xs font-bold"
     >
-      {{ props.stats[index].name }}
+      {{ stat.name }}
     </p>
-    <p class="my-2 mr-2 min-w-5 text-xs text-grayScaleDark">
-      {{ props.stats[index].value }}
+    <p
+      data-testid="stat-value"
+      class="my-2 mr-2 min-w-5 text-xs text-grayScaleDark"
+    >
+      {{ stat.value }}
     </p>
     <progress
       class="h-1 flex-1 rounded-md"
-      :value="props.stats[index].value"
+      :value="stat.value"
       max="120"
     ></progress>
   </div>

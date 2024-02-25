@@ -14,8 +14,8 @@ const showSort = ref<boolean>(false);
       <img id="sort-icon" src="~/assets/sorting.svg" alt="sorting" />
     </div>
     <div
-      data-testid="show-sort"
       v-if="showSort"
+      data-testid="show-sort"
       class="absolute right-0 top-10 z-50 min-w-32 rounded-xl border-4 border-t-0 border-solid border-red bg-red px-1 pb-1 pt-0 shadow"
     >
       <p class="my-3 px-4 py-2 text-xs font-bold text-white">Sort by:</p>
