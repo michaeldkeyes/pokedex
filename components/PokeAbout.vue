@@ -25,7 +25,9 @@ const height = computed(() => {
     >
       <div class="flex items-center justify-center gap-2 px-5 py-2 text-center">
         <img class="text-center" src="~/assets/weight.svg" alt="weight" />
-        <p class="my-2 text-center text-xs">{{ weight }}</p>
+        <p data-testid="weight" class="my-2 text-center text-xs">
+          {{ weight }}
+        </p>
       </div>
       <p class="my-2 text-center text-xxs text-grayscaleMedium">Weight</p>
     </div>
@@ -38,7 +40,9 @@ const height = computed(() => {
           src="~/assets/height.svg"
           alt="height"
         />
-        <p class="my-2 text-center text-xs">{{ height }}</p>
+        <p data-testid="height" class="my-2 text-center text-xs">
+          {{ height }}
+        </p>
       </div>
       <p class="my-2 text-center text-xxs text-grayscaleMedium">Height</p>
     </div>
@@ -47,6 +51,7 @@ const height = computed(() => {
         <p
           v-for="(ability, index) in abilities"
           :key="index"
+          data-testid="abilities"
           class="my-2 break-all text-center text-xs capitalize"
         >
           {{ ability.ability.name }}
@@ -55,7 +60,7 @@ const height = computed(() => {
       <p class="my-2 text-center text-xxs text-grayscaleMedium">Abilities</p>
     </div>
   </div>
-  <p class="my-2 text-xs text-grayScaleDark">
+  <p data-testid="flavor-text" class="my-2 text-xs text-grayScaleDark">
     {{ flavorText }}
   </p>
 </template>
