@@ -15,8 +15,8 @@ function resetQuery() {
   >
     <img src="~/assets/search.svg" alt="search" class="ml-4" />
     <input
-      id="search-input"
       v-model.trim="query"
+      data-testid="search-input"
       class="w-[60%] border-none text-xs focus-visible:outline-none"
       type="text"
       placeholder="Search"
@@ -24,7 +24,7 @@ function resetQuery() {
     />
     <img
       v-if="query.length > 0"
-      id="search-close-icon"
+      data-testid="search-close-icon"
       class="absolute right-4 cursor-pointer"
       src="~/assets/cross.svg"
       alt="cross icon"
