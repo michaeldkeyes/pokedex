@@ -11,6 +11,7 @@ defineProps<Props>();
   <div class="relative">
     <NuxtLink
       v-if="id > 1"
+      data-testid="back-link"
       :to="`/details/${id - 1}`"
       class="absolute -left-8 top-1/2 z-50 inline-block translate-y-1/2"
     >
@@ -29,6 +30,7 @@ defineProps<Props>();
     </div>
     <NuxtLink
       v-if="id < 151"
+      data-testid="forward-link"
       :to="`/details/${id + 1}`"
       class="absolute -right-8 top-1/2 z-50 inline-block translate-y-1/2"
     >
