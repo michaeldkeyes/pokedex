@@ -30,10 +30,14 @@ const threeDigitId = computed(() => {
         </NuxtLink>
       </div>
       <div>
-        <h1 class="text-2xl font-bold text-white">{{ capitalizedName }}</h1>
+        <h1 data-testid="name" class="text-2xl font-bold text-white">
+          {{ capitalizedName }}
+        </h1>
       </div>
       <div>
-        <p class="text-xs font-bold text-white">{{ threeDigitId }}</p>
+        <p data-testid="id" class="text-xs font-bold text-white">
+          {{ threeDigitId }}
+        </p>
       </div>
     </div>
   </header>
