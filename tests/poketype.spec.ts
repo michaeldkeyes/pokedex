@@ -14,7 +14,7 @@ describe("PokeType.vue", () => {
       },
     });
 
-    const typeTags = wrapper.findAll("[data-testid='poke-type']");
+    const typeTags = wrapper.findAll("#poke-type");
 
     typeTags.forEach((tag, index) => {
       expect(tag.text()).equals(types[index].type.name);

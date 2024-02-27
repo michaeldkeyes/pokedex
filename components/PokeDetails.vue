@@ -1,24 +1,20 @@
 <script setup lang="ts">
+//@ts-nocheck
 const id = parseInt(useRoute().params.id as string);
 
-// const { data: thingy } = await useAsyncData(`$id`, async () => {
-//   const [pokemon, species] = await Promise.all([
-//     $fetch(`https://pokeapi.co/api/v2/pokemon/${id}`),
-//     $fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
-//   ]);
+const { data: pokemonData } = await useAsyncData("pokemonData", async () => {
+  const [pokemon, species] = await Promise.all([
+    $fetch(`https://pokeapi.co/api/v2/pokemon/${id}`),
+    $fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
+  ]);
 
-//   return { pokemon, species };
-// });
-// const { data: pokemon } = await useFetch(
-//   `https://pokeapi.co/api/v2/pokemon/${id}`,
-// );
-// const { data: species } = await useFetch(
-//   `https://pokeapi.co/api/v2/pokemon-species/${id}`,
-// );
-const [{ data: pokemon }, { data: species }] = await Promise.all([
-  useFetch<any>(`https://pokeapi.co/api/v2/pokemon/${id}`),
-  useFetch<any>(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
-]);
+  return { pokemon, species };
+});
+
+// const [{ data: pokemon }, { data: species }] = await Promise.all([
+//   useFetch<any>(`https://pokeapi.co/api/v2/pokemon/${id}`),
+//   useFetch<any>(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
+// ]);
 
 const typeColors = {
   bug: [168, 184, 32],
@@ -42,7 +38,7 @@ const typeColors = {
 };
 
 const backgroundColor = computed(() => {
-  const pokemonType = pokemon.value.types[0].type.name;
+  const pokemonType = pokemonData.value.pokemon.types[0].type.name;
   const type = typeColors[pokemonType as keyof typeof typeColors];
   const rValue = type[0];
   const gValue = type[1];
@@ -52,7 +48,7 @@ const backgroundColor = computed(() => {
 });
 
 const progressBarColor = computed(() => {
-  const pokemonType = pokemon.value.types[0].type.name;
+  const pokemonType = pokemonData.value.pokemon.types[0].type.name;
   const type = typeColors[pokemonType as keyof typeof typeColors];
   const rValue = type[0];
   const gValue = type[1];
@@ -62,30 +58,39 @@ const progressBarColor = computed(() => {
 });
 
 const stats = [
-  { name: "HP", value: pokemon.value.stats[0].base_stat },
-  { name: "ATK", value: pokemon.value.stats[1].base_stat },
-  { name: "DEF", value: pokemon.value.stats[2].base_stat },
-  { name: "SATK", value: pokemon.value.stats[3].base_stat },
-  { name: "SDEF", value: pokemon.value.stats[4].base_stat },
-  { name: "SPD", value: pokemon.value.stats[5].base_stat },
+  { name: "HP", value: pokemonData.value.pokemon.stats[0].base_stat },
+  { name: "ATK", value: pokemonData.value.pokemon.stats[1].base_stat },
+  { name: "DEF", value: pokemonData.value.pokemon.stats[2].base_stat },
+  { name: "SATK", value: pokemonData.value.pokemon.stats[3].base_stat },
+  { name: "SDEF", value: pokemonData.value.pokemon.stats[4].base_stat },
+  { name: "SPD", value: pokemonData.value.pokemon.stats[5].base_stat },
 ];
 </script>
 
 <template>
   <main class="m-0 flex h-screen w-screen flex-col items-center gap-4 p-0">
-    <PokeDetailsHeader :id="pokemon.id" :name="pokemon.name" />
-    <PokeImage :id="id" :pokemon-name="pokemon.name" />
+    <PokeDetailsHeader
+      :id="pokemonData.pokemon.id"
+      :name="pokemonData.pokemon.name"
+    />
+    <PokeImage :id="id" :pokemon-name="pokemonData.pokemon.name" />
     <div
       class="relative -mt-12 flex flex-col rounded-lg bg-white px-5 pb-5 pt-14 shadow-inner"
     >
-      <PokeType :background-color="backgroundColor" :types="pokemon.types" />
+      <PokeType
+        :background-color="backgroundColor"
+        :types="pokemonData.pokemon.types"
+      />
       <PokeAbout
-        :abilities="pokemon.abilities"
+        :abilities="pokemonData.pokemon.abilities"
         :flavor-text="
-          species.flavor_text_entries[0].flavor_text.replace(/\f/g, ' ')
+          pokemonData.species.flavor_text_entries[0].flavor_text.replace(
+            /\f/g,
+            ' ',
+          )
         "
-        :height="pokemon.height"
-        :weight="pokemon.weight"
+        :height="pokemonData.pokemon.height"
+        :weight="pokemonData.pokemon.weight"
       />
 
       <PokeStats

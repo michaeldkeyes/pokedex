@@ -11,8 +11,8 @@ defineProps<Props>();
   <div class="flex flex-wrap items-center justify-center gap-4">
     <p
       v-for="(type, index) in types"
+      id="poke-type"
       :key="index"
-      data-testid="poke-type"
       class="my-3 rounded-lg px-2 py-1 text-xs font-bold capitalize text-white"
     >
       {{ type.type.name }}
