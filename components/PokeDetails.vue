@@ -2,14 +2,18 @@
 //@ts-nocheck
 const id = parseInt(useRoute().params.id as string);
 
-const { data: pokemonData } = await useAsyncData("pokemonData", async () => {
-  const [pokemon, species] = await Promise.all([
-    $fetch(`https://pokeapi.co/api/v2/pokemon/${id}`),
-    $fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
-  ]);
+const { data: pokeyman } = await useFetch(`/api/pokemon/${id}`);
 
-  return { pokemon, species };
-});
+const pokemon = ref(pokeyman.value?.pokemon);
+
+// const { data: pokemonData } = await useAsyncData("pokemonData", async () => {
+//   const [pokemon, species] = await Promise.all([
+//     $fetch(`https://pokeapi.co/api/v2/pokemon/${id}`),
+//     $fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
+//   ]);
+
+//   return { pokemon, species };
+// });
 
 // const [{ data: pokemon }, { data: species }] = await Promise.all([
 //   useFetch<any>(`https://pokeapi.co/api/v2/pokemon/${id}`),
@@ -37,60 +41,91 @@ const typeColors = {
   water: [104, 144, 240],
 };
 
+// const backgroundColor = computed(() => {
+//   const pokemonType = pokemonData.value.pokemon.types[0].type.name;
+//   const type = typeColors[pokemonType as keyof typeof typeColors];
+//   const rValue = type[0];
+//   const gValue = type[1];
+//   const bValue = type[2];
+
+//   return `rgb(${rValue}, ${gValue}, ${bValue})`;
+// });
+
 const backgroundColor = computed(() => {
-  const pokemonType = pokemonData.value.pokemon.types[0].type.name;
-  const type = typeColors[pokemonType as keyof typeof typeColors];
-  const rValue = type[0];
-  const gValue = type[1];
-  const bValue = type[2];
+  const pokemonType = pokemon.value?.typeOne.toLowerCase();
+  const color = typeColors[pokemonType as keyof typeof typeColors];
+
+  const rValue = color[0];
+  const gValue = color[1];
+  const bValue = color[2];
 
   return `rgb(${rValue}, ${gValue}, ${bValue})`;
 });
 
+// const progressBarColor = computed(() => {
+//   const pokemonType = pokemonData.value.pokemon.types[0].type.name;
+//   const type = typeColors[pokemonType as keyof typeof typeColors];
+//   const rValue = type[0];
+//   const gValue = type[1];
+//   const bValue = type[2];
+
+//   return `rgba(${rValue}, ${gValue}, ${bValue}, 0.5)`;
+// });
+
 const progressBarColor = computed(() => {
-  const pokemonType = pokemonData.value.pokemon.types[0].type.name;
-  const type = typeColors[pokemonType as keyof typeof typeColors];
-  const rValue = type[0];
-  const gValue = type[1];
-  const bValue = type[2];
+  const pokemonType = pokemon.value?.typeOne.toLowerCase();
+  const color = typeColors[pokemonType as keyof typeof typeColors];
+
+  const rValue = color[0];
+  const gValue = color[1];
+  const bValue = color[2];
 
   return `rgba(${rValue}, ${gValue}, ${bValue}, 0.5)`;
 });
 
+const types = computed(() => {
+  const pokeTypes = [pokemon.value?.typeOne];
+
+  if (pokemon.value?.typeTwo) {
+    pokeTypes.push(pokemon.value.typeTwo);
+  }
+
+  return pokeTypes;
+});
+
+const abilities = computed(() => {
+  const pokeAbilities = [pokemon.value?.abilityOne, pokemon.value?.abilityTwo];
+
+  if (pokemon.value?.abilityThree) {
+    pokeAbilities.push(pokemon.value.abilityThree);
+  }
+
+  return pokeAbilities;
+});
+
 const stats = [
-  { name: "HP", value: pokemonData.value.pokemon.stats[0].base_stat },
-  { name: "ATK", value: pokemonData.value.pokemon.stats[1].base_stat },
-  { name: "DEF", value: pokemonData.value.pokemon.stats[2].base_stat },
-  { name: "SATK", value: pokemonData.value.pokemon.stats[3].base_stat },
-  { name: "SDEF", value: pokemonData.value.pokemon.stats[4].base_stat },
-  { name: "SPD", value: pokemonData.value.pokemon.stats[5].base_stat },
+  { name: "HP", value: pokemon.value?.hp },
+  { name: "ATK", value: pokemon.value?.atk },
+  { name: "DEF", value: pokemon.value?.def },
+  { name: "SATK", value: pokemon.value?.satk },
+  { name: "SDEF", value: pokemon.value?.sdef },
+  { name: "SPD", value: pokemon.value?.spd },
 ];
 </script>
 
 <template>
   <main class="m-0 flex h-screen w-screen flex-col items-center gap-4 p-0">
-    <PokeDetailsHeader
-      :id="pokemonData.pokemon.id"
-      :name="pokemonData.pokemon.name"
-    />
-    <PokeImage :id="id" :pokemon-name="pokemonData.pokemon.name" />
+    <PokeDetailsHeader :id="pokemon.id" :name="pokemon.name" />
+    <PokeImage :id="id" :pokemon-name="pokemon.name" />
     <div
-      class="relative -mt-12 flex flex-col rounded-lg bg-white px-5 pb-5 pt-14 shadow-inner"
+      class="relative -mt-12 flex w-full flex-col rounded-lg bg-white px-5 pb-5 pt-14 shadow-inner sm:w-8/12 md:w-3/4 lg:w-3/5 xl:w-1/2 2xl:w-1/3"
     >
-      <PokeType
-        :background-color="backgroundColor"
-        :types="pokemonData.pokemon.types"
-      />
+      <PokeType :background-color="backgroundColor" :types="types" />
       <PokeAbout
-        :abilities="pokemonData.pokemon.abilities"
-        :flavor-text="
-          pokemonData.species.flavor_text_entries[0].flavor_text.replace(
-            /\f/g,
-            ' ',
-          )
-        "
-        :height="pokemonData.pokemon.height"
-        :weight="pokemonData.pokemon.weight"
+        :abilities="abilities"
+        :flavor-text="pokemon?.flavorText"
+        :height="pokemon.height"
+        :weight="pokemon.weight"
       />
 
       <PokeStats

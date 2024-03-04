@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-  abilities: { ability: { name: string } }[];
+  abilities: string[];
   flavorText: string;
   height: number;
   weight: number;
@@ -54,13 +54,16 @@ const height = computed(() => {
           data-testid="abilities"
           class="my-2 break-all text-center text-xs capitalize"
         >
-          {{ ability.ability.name }}
+          {{ ability }}
         </p>
       </div>
       <p class="my-2 text-center text-xxs text-grayscaleMedium">Abilities</p>
     </div>
   </div>
-  <p data-testid="flavor-text" class="my-2 text-xs text-grayScaleDark">
+  <p
+    data-testid="flavor-text"
+    class="my-2 text-center text-xs text-grayScaleDark"
+  >
     {{ flavorText }}
   </p>
 </template>

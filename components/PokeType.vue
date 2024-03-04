@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface Props {
   backgroundColor: string;
-  types: { type: { name: string } }[];
+  types: string[];
 }
 
 defineProps<Props>();
@@ -15,7 +15,7 @@ defineProps<Props>();
       :key="index"
       class="my-3 rounded-lg px-2 py-1 text-xs font-bold capitalize text-white"
     >
-      {{ type.type.name }}
+      {{ type }}
     </p>
   </div>
 </template>

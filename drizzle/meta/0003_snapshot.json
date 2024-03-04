@@ -1,0 +1,182 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "id": "a8d3bb23-618a-4dc8-aaa0-0ec965d6e4f3",
+  "prevId": "26cc5e30-f114-435a-a6e3-66118d6b7fc0",
+  "tables": {
+    "pokemon": {
+      "name": "pokemon",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type_one": {
+          "name": "type_one",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type_two": {
+          "name": "type_two",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "height": {
+          "name": "height",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "weight": {
+          "name": "weight",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "abilities": {
+          "name": "abilities",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "flavor_text": {
+          "name": "flavor_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "hp": {
+          "name": "hp",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "atk": {
+          "name": "atk",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "def": {
+          "name": "def",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "satk": {
+          "name": "satk",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "sdef": {
+          "name": "sdef",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "spd": {
+          "name": "spd",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "pokemon_name_unique": {
+          "name": "pokemon_name_unique",
+          "columns": [
+            "name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "pokemon_type_one_types_type_fk": {
+          "name": "pokemon_type_one_types_type_fk",
+          "tableFrom": "pokemon",
+          "tableTo": "types",
+          "columnsFrom": [
+            "type_one"
+          ],
+          "columnsTo": [
+            "type"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "pokemon_type_two_types_type_fk": {
+          "name": "pokemon_type_two_types_type_fk",
+          "tableFrom": "pokemon",
+          "tableTo": "types",
+          "columnsFrom": [
+            "type_two"
+          ],
+          "columnsTo": [
+            "type"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "types": {
+      "name": "types",
+      "columns": {
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "types_type_unique": {
+          "name": "types_type_unique",
+          "columns": [
+            "type"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {
+      "\"pokemon\".\"types\"": "\"pokemon\".\"type_one\""
+    }
+  }
+}

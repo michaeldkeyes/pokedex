@@ -1,0 +1,259 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "id": "c3dc1c02-eee3-4375-9a95-7fda5cedcf21",
+  "prevId": "a8d3bb23-618a-4dc8-aaa0-0ec965d6e4f3",
+  "tables": {
+    "abilities": {
+      "name": "abilities",
+      "columns": {
+        "ability": {
+          "name": "ability",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "abilities_ability_unique": {
+          "name": "abilities_ability_unique",
+          "columns": [
+            "ability"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "pokemon": {
+      "name": "pokemon",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type_one": {
+          "name": "type_one",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type_two": {
+          "name": "type_two",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "height": {
+          "name": "height",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "weight": {
+          "name": "weight",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ability_one": {
+          "name": "ability_one",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ability_two": {
+          "name": "ability_two",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ability_three": {
+          "name": "ability_three",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "flavor_text": {
+          "name": "flavor_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "hp": {
+          "name": "hp",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "atk": {
+          "name": "atk",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "def": {
+          "name": "def",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "satk": {
+          "name": "satk",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "sdef": {
+          "name": "sdef",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "spd": {
+          "name": "spd",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "pokemon_name_unique": {
+          "name": "pokemon_name_unique",
+          "columns": [
+            "name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "pokemon_type_one_types_type_fk": {
+          "name": "pokemon_type_one_types_type_fk",
+          "tableFrom": "pokemon",
+          "tableTo": "types",
+          "columnsFrom": [
+            "type_one"
+          ],
+          "columnsTo": [
+            "type"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "pokemon_type_two_types_type_fk": {
+          "name": "pokemon_type_two_types_type_fk",
+          "tableFrom": "pokemon",
+          "tableTo": "types",
+          "columnsFrom": [
+            "type_two"
+          ],
+          "columnsTo": [
+            "type"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "pokemon_ability_one_abilities_ability_fk": {
+          "name": "pokemon_ability_one_abilities_ability_fk",
+          "tableFrom": "pokemon",
+          "tableTo": "abilities",
+          "columnsFrom": [
+            "ability_one"
+          ],
+          "columnsTo": [
+            "ability"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "pokemon_ability_two_abilities_ability_fk": {
+          "name": "pokemon_ability_two_abilities_ability_fk",
+          "tableFrom": "pokemon",
+          "tableTo": "abilities",
+          "columnsFrom": [
+            "ability_two"
+          ],
+          "columnsTo": [
+            "ability"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "pokemon_ability_three_abilities_ability_fk": {
+          "name": "pokemon_ability_three_abilities_ability_fk",
+          "tableFrom": "pokemon",
+          "tableTo": "abilities",
+          "columnsFrom": [
+            "ability_three"
+          ],
+          "columnsTo": [
+            "ability"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "types": {
+      "name": "types",
+      "columns": {
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "types_type_unique": {
+          "name": "types_type_unique",
+          "columns": [
+            "type"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {
+      "\"pokemon\".\"abilities\"": "\"pokemon\".\"ability_one\""
+    }
+  }
+}
