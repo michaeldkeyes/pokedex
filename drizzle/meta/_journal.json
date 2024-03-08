@@ -36,6 +36,27 @@
       "when": 1709416552708,
       "tag": "0004_glamorous_kang",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1709659045658,
+      "tag": "0005_silent_liz_osborn",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1709743655672,
+      "tag": "0006_same_tomorrow_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1709744952320,
+      "tag": "0007_foamy_talisman",
+      "breakpoints": true
     }
   ]
 }
